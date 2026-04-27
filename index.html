@@ -275,16 +275,32 @@ h2.title{
 }
 
 /* ── PRODUK ── */
-#produk{background:transparent;padding:6rem 5%}
-.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.pcard{will-change:transform;
-  background:#fff;
-  border:1px solid var(--sand);
-  border-radius:14px;overflow:hidden;
-  transition:transform .3s ease,box-shadow .3s ease,border-color .3s;
-  cursor:pointer;
-  box-shadow:0 2px 12px rgba(45,84,18,0.06);
+#produk {
+  background: transparent;
+  padding: 6rem 5%;
 }
+
+/* Grid Responsif: 3 kolom di desktop, 1 kolom di mobile */
+.pgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.pcard {
+  will-change: transform;
+  background: #fff;
+  border: 1px solid var(--sand);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(45,84,18,0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Container Ikon: Menggunakan warna solid dari ic1, ic2, ic3 */
 .pcard-icon {
   width: 66px;
   height: 66px;
@@ -293,55 +309,107 @@ h2.title{
   align-items: center;
   justify-content: center;
   position: relative;
-  z-index: 2; /* Pastikan di atas background */
+  z-index: 2;
   box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  overflow: hidden; /* Mencegah gambar meluap */
-  background: rgba(255, 255, 255, 0.15); /* Memberi kesan glassmorphism tipis */
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.8); /* Frame putih tipis */
 }
 
-/* Styling khusus untuk ikon gambar */
+/* Styling Ikon Gambar */
 .pcard-icon img {
-  width: 32px; /* Ukuran pas untuk container 66px */
+  width: 32px;
   height: 32px;
-  object-fit: contain; /* Menjaga proporsi ikon */
-  transition: transform 0.3s ease; /* Animasi saat hover */
-  
-  /* Jika ikon ingin dibuat putih bersih secara otomatis: */
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  /* Jika gambar ikon berwarna hitam, aktifkan ini untuk membuatnya putih */
   /* filter: brightness(0) invert(1); */
 }
 
-/* Efek saat kartu di-hover */
-.pcard:hover .pcard-icon img {
-  transform: scale(1.1); /* Ikon sedikit membesar saat hover */
-}
-.ic1{background:var(--green-main)}.ic2{background:#1A6E58}.ic3{background:#8A6020}
-.pcard-icon svg{width:32px;height:32px;fill:#fff}
-.pcard-body{padding:1.4rem 1.5rem}
-.pcard-cat{
-  font-size:.66rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
-  color:var(--green-mid);margin-bottom:.35rem;
-}
-.pcard-name{
-  font-family:var(--fd);font-size:1.18rem;font-weight:700;
-  color:var(--green-ink);margin-bottom:.5rem;line-height:1.25;
-}
-.pcard-desc{font-size:.83rem;color:var(--text-soft);line-height:1.65;margin-bottom:1.1rem}
-.pcard-foot{display:flex;align-items:center;justify-content:space-between;
-  padding-top:.9rem;border-top:1px solid var(--warm)}
-.pcard-price{font-family:var(--fd);font-size:1.22rem;font-weight:700;color:var(--green-main)}
-.pcard-btn{
-  font-size:.76rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;
-  color:var(--green-main);text-decoration:none;
-  display:flex;align-items:center;gap:4px;
-  border-bottom:1.5px solid transparent;
-  transition:border-color .2s;padding-bottom:1px;
-}
-.pcard-btn:hover{border-color:var(--green-main)}
-.pcard-btn::after{content:'→';display:inline-block;transition:transform .2s}
-.pcard-btn:hover::after{transform:translateX(4px)}
+/* Warna Background Ikon (Override Glassmorphism dengan warna solid) */
+.ic1 { background: var(--green-main) !important; }
+.ic2 { background: #1A6E58 !important; }
+.ic3 { background: #8A6020 !important; }
 
+/* Efek Hover */
+.pcard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(45,84,18,0.15);
+  border-color: var(--green-mid);
+}
+
+.pcard:hover .pcard-icon img {
+  transform: scale(1.15);
+}
+
+.pcard-body {
+  padding: 1.4rem 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pcard-cat {
+  font-size: .66rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--green-mid);
+  margin-bottom: .35rem;
+}
+
+.pcard-name {
+  font-family: var(--fd);
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--green-ink);
+  margin-bottom: .5rem;
+  line-height: 1.25;
+}
+
+.pcard-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: .9rem;
+  margin-top: auto; /* Memaksa footer ke paling bawah kartu */
+  border-top: 1px solid var(--warm);
+}
+
+/* Tombol Lihat Produk */
+.pcard-btn-main {
+  background: none;
+  border: none;
+  font-size: .76rem;
+  font-weight: 700;
+  color: var(--green-main);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.2s;
+}
+
+.pcard-btn-main:hover {
+  color: var(--green-ink);
+}
+
+.pcard-btn-main::after {
+  content: '→';
+  transition: transform 0.2s;
+}
+
+.pcard-btn-main:hover::after {
+  transform: translateX(4px);
+}
+
+/* Aturan Khusus Mobile */
+@media (max-width: 480px) {
+  #produk { padding: 4rem 20px; }
+  .pgrid { grid-template-columns: 1fr; gap: 1.2rem; }
+  .pcard-icon { width: 56px; height: 56px; }
+  .pcard-icon img { width: 28px; height: 28px; }
+}
 /* ── LAYANAN ── */
 #layanan{padding:6rem 5%}
 .lgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
@@ -1200,119 +1268,113 @@ footer{
         <h2 class="title title-dark">Produk <em>Unggulan</em> Kami</h2>
         <p class="body-txt body-txt-dark" style="max-width:420px">Rangkaian produk agrokimia berstandar internasional, diuji dan tersertifikasi untuk semua jenis lahan pertanian Indonesia.</p>
       </div>
-      <a href="#" class="btn-outline-dark" style="display:inline-flex;align-items:center;gap:7px">Semua Produk <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a href="#" class="btn-outline-dark" style="display:inline-flex;align-items:center;gap:7px">
+        Semua Produk 
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
     </div>
+
     <div class="pgrid">
 
-      <!-- 1. PESTISIDA -->
       <div class="pcard reveal" data-cat="pestisida">
-  <div class="pcard-img">
-    <div class="pcard-img-bg bg1"></div>
-    <div class="pcard-icon ic1">
-      <img src="pestisida.png" alt="Ikon Pestisida" style="width: 100%; height: 100%; object-fit: contain;">
-    </div>
-  </div>
-</div>
+        <div class="pcard-img">
+          <div class="pcard-img-bg bg1"></div>
+          <div class="pcard-icon ic1">
+            <img src="pestisida.png" alt="Ikon Pestisida">
+          </div>
+        </div>
         <div class="pcard-body">
           <div class="pcard-cat">Pestisida</div>
           <div class="pcard-name">Pengendalian Hama Tanaman</div>
-          <div class="pcard-foot" style="margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--warm)">
-            <div style="font-size:.78rem;color:var(--text-soft)">6 produk tersedia</div>
+          <div class="pcard-foot">
+            <div class="pcard-info">6 produk tersedia</div>
             <button class="pcard-btn-main" onclick="openModal('pestisida')">Lihat Produk</button>
           </div>
         </div>
       </div>
 
-      <!-- 2. FUNGISIDA -->
       <div class="pcard reveal" data-cat="fungisida">
-  <div class="pcard-img">
-    <div class="pcard-img-bg bg2"></div>
-    <div class="pcard-icon ic2">
-      <img src="fungisida.png" alt="Icon Fungisida">
-    </div>
-  </div>
-</div>
+        <div class="pcard-img">
+          <div class="pcard-img-bg bg2"></div>
+          <div class="pcard-icon ic2">
+            <img src="fungisida.png" alt="Icon Fungisida">
+          </div>
+        </div>
         <div class="pcard-body">
           <div class="pcard-cat">Fungisida</div>
           <div class="pcard-name">Pencegah Penyakit Jamur</div>
-          <div class="pcard-foot" style="margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--warm)">
-            <div style="font-size:.78rem;color:var(--text-soft)">5 produk tersedia</div>
+          <div class="pcard-foot">
+            <div class="pcard-info">5 produk tersedia</div>
             <button class="pcard-btn-main" onclick="openModal('fungisida')">Lihat Produk</button>
           </div>
         </div>
       </div>
 
-      <!-- 3. HERBISIDA -->
       <div class="pcard reveal" data-cat="herbisida">
-  <div class="pcard-img">
-    <div class="pcard-img-bg bg3"></div>
-    <div class="pcard-icon ic3">
-      <img src="herbisida.png" alt="Icon Herbisida">
-    </div>
-  </div>
-</div>
+        <div class="pcard-img">
+          <div class="pcard-img-bg bg3"></div>
+          <div class="pcard-icon ic3">
+            <img src="herbisida.png" alt="Icon Herbisida">
+          </div>
+        </div>
         <div class="pcard-body">
           <div class="pcard-cat">Herbisida</div>
           <div class="pcard-name">Pengendali Gulma & Rumput Liar</div>
-          <div class="pcard-foot" style="margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--warm)">
-            <div style="font-size:.78rem;color:var(--text-soft)">4 produk tersedia</div>
+          <div class="pcard-foot">
+            <div class="pcard-info">4 produk tersedia</div>
             <button class="pcard-btn-main" onclick="openModal('herbisida')">Lihat Produk</button>
           </div>
         </div>
       </div>
 
-      <!-- 4. PUPUK -->
       <div class="pcard reveal" data-cat="pupuk">
-  <div class="pcard-img">
-    <div class="pcard-img-bg bg1"></div>
-    <div class="pcard-icon ic1">
-      <img src="pupuk.png" alt="Icon Pupuk">
-    </div>
-  </div>
-</div>
+        <div class="pcard-img">
+          <div class="pcard-img-bg bg1"></div>
+          <div class="pcard-icon ic1">
+            <img src="pupuk.png" alt="Icon Pupuk">
+          </div>
+        </div>
         <div class="pcard-body">
           <div class="pcard-cat">Pupuk</div>
           <div class="pcard-name">Nutrisi & Penyubur Tanaman</div>
-          <div class="pcard-foot" style="margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--warm)">
-            <div style="font-size:.78rem;color:var(--text-soft)">8 produk tersedia</div>
+          <div class="pcard-foot">
+            <div class="pcard-info">8 produk tersedia</div>
             <button class="pcard-btn-main" onclick="openModal('pupuk')">Lihat Produk</button>
           </div>
         </div>
       </div>
 
-      <!-- 5. INSEKTISIDA -->
       <div class="pcard reveal" data-cat="insektisida">
-  <div class="pcard-img">
-    <div class="pcard-img-bg bg2"></div>
-    <div class="pcard-icon ic2">
-      <img src="insektisida.png" alt="Icon Insektisida">
-    </div>
-  </div>
-</div>
+        <div class="pcard-img">
+          <div class="pcard-img-bg bg2"></div>
+          <div class="pcard-icon ic2">
+            <img src="insektisida.png" alt="Icon Insektisida">
+          </div>
+        </div>
         <div class="pcard-body">
           <div class="pcard-cat">Insektisida</div>
           <div class="pcard-name">Pembasmi Serangga & Hama</div>
-          <div class="pcard-foot" style="margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--warm)">
-            <div style="font-size:.78rem;color:var(--text-soft)">7 produk tersedia</div>
+          <div class="pcard-foot">
+            <div class="pcard-info">7 produk tersedia</div>
             <button class="pcard-btn-main" onclick="openModal('insektisida')">Lihat Produk</button>
           </div>
         </div>
       </div>
 
-      <!-- 6. ZPT & ADJUVANT -->
       <div class="pcard reveal" data-cat="zpt">
-  <div class="pcard-img">
-    <div class="pcard-img-bg bg3"></div>
-    <div class="pcard-icon ic3">
-      <img src="zpt&adjuvant.png" alt="Icon ZPT">
-    </div>
-  </div>
-</div>
+        <div class="pcard-img">
+          <div class="pcard-img-bg bg3"></div>
+          <div class="pcard-icon ic3">
+            <img src="zpt&adjuvant.png" alt="Icon ZPT">
+          </div>
+        </div>
         <div class="pcard-body">
           <div class="pcard-cat">ZPT & Adjuvant</div>
           <div class="pcard-name">Perangsang Tumbuh & Perekat</div>
-          <div class="pcard-foot" style="margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--warm)">
-            <div style="font-size:.78rem;color:var(--text-soft)">5 produk tersedia</div>
+          <div class="pcard-foot">
+            <div class="pcard-info">5 produk tersedia</div>
             <button class="pcard-btn-main" onclick="openModal('zpt')">Lihat Produk</button>
           </div>
         </div>
