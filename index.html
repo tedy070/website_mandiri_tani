@@ -941,23 +941,18 @@ footer{
 
 @media (max-width: 480px) {
   /* 1. Hero Container */
+  @media (max-width: 480px) {
   .hero {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; 
     min-height: 100vh;
-    height: auto;
     
-    /* PADDING UNTUK MENGATUR POSISI KONTEN */
-    /* Tambahkan padding-top untuk menurunkan seluruh konten (termasuk teks) */
-    padding-top: 80px; 
+    /* Gunakan ini untuk mengatur display keseluruhan */
+    padding-top: 50px;    /* Menambah ruang di atas (gambar turun) */
+    padding-bottom: 50px; /* Menambah ruang di bawah (gambar naik) */
     
-    /* Tambahkan padding-bottom untuk menaikkan posisi Stats Bar dari dasar layar */
-    padding-bottom: -50px; 
-
-    /* Pastikan padding tidak merusak ukuran elemen */
-    box-sizing: border-box; 
-    position: relative;
+    box-sizing: border-box;
+  }
 }
   /* 2. Content Area */
   .hero-content {
