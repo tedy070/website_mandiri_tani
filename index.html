@@ -285,24 +285,36 @@ h2.title{
   cursor:pointer;
   box-shadow:0 2px 12px rgba(45,84,18,0.06);
 }
-.pcard:hover{
-  transform:translateY(-5px);
-  box-shadow:0 20px 50px rgba(45,84,18,0.15);
-  border-color:var(--green-mid);
+.pcard-icon {
+  width: 66px;
+  height: 66px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2; /* Pastikan di atas background */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  overflow: hidden; /* Mencegah gambar meluap */
+  background: rgba(255, 255, 255, 0.15); /* Memberi kesan glassmorphism tipis */
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
-.pcard-img{
-  height:158px;position:relative;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;
+
+/* Styling khusus untuk ikon gambar */
+.pcard-icon img {
+  width: 32px; /* Ukuran pas untuk container 66px */
+  height: 32px;
+  object-fit: contain; /* Menjaga proporsi ikon */
+  transition: transform 0.3s ease; /* Animasi saat hover */
+  
+  /* Jika ikon ingin dibuat putih bersih secara otomatis: */
+  /* filter: brightness(0) invert(1); */
 }
-.pcard-img-bg{position:absolute;inset:0}
-.bg1{background:linear-gradient(135deg,#E8F5D0 0%,#C4E49A 100%)}
-.bg2{background:linear-gradient(135deg,#D0EEE8 0%,#90D0C0 100%)}
-.bg3{background:linear-gradient(135deg,#F5E8D0 0%,#E0C080 100%)}
-.pcard-icon{
-  width:66px;height:66px;border-radius:16px;
-  display:flex;align-items:center;justify-content:center;
-  position:relative;z-index:1;
-  box-shadow:0 6px 20px rgba(0,0,0,0.15);
+
+/* Efek saat kartu di-hover */
+.pcard:hover .pcard-icon img {
+  transform: scale(1.1); /* Ikon sedikit membesar saat hover */
 }
 .ic1{background:var(--green-main)}.ic2{background:#1A6E58}.ic3{background:#8A6020}
 .pcard-icon svg{width:32px;height:32px;fill:#fff}
@@ -1194,11 +1206,13 @@ footer{
 
       <!-- 1. PESTISIDA -->
       <div class="pcard reveal" data-cat="pestisida">
-        <div class="pcard-img"><div class="pcard-img-bg bg1"></div>
-          <div class="pcard-icon ic1">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
-          </div>
-        </div>
+  <div class="pcard-img">
+    <div class="pcard-img-bg bg1"></div>
+    <div class="pcard-icon ic1">
+      <img src="pestisida.png" alt="Ikon Pestisida" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+  </div>
+</div>
         <div class="pcard-body">
           <div class="pcard-cat">Pestisida</div>
           <div class="pcard-name">Pengendalian Hama Tanaman</div>
@@ -1211,11 +1225,13 @@ footer{
 
       <!-- 2. FUNGISIDA -->
       <div class="pcard reveal" data-cat="fungisida">
-        <div class="pcard-img"><div class="pcard-img-bg bg2"></div>
-          <div class="pcard-icon ic2">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-        </div>
+  <div class="pcard-img">
+    <div class="pcard-img-bg bg2"></div>
+    <div class="pcard-icon ic2">
+      <img src="fungisida.png" alt="Icon Fungisida">
+    </div>
+  </div>
+</div>
         <div class="pcard-body">
           <div class="pcard-cat">Fungisida</div>
           <div class="pcard-name">Pencegah Penyakit Jamur</div>
@@ -1228,11 +1244,13 @@ footer{
 
       <!-- 3. HERBISIDA -->
       <div class="pcard reveal" data-cat="herbisida">
-        <div class="pcard-img"><div class="pcard-img-bg bg3"></div>
-          <div class="pcard-icon ic3">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-          </div>
-        </div>
+  <div class="pcard-img">
+    <div class="pcard-img-bg bg3"></div>
+    <div class="pcard-icon ic3">
+      <img src="herbisida.png" alt="Icon Herbisida">
+    </div>
+  </div>
+</div>
         <div class="pcard-body">
           <div class="pcard-cat">Herbisida</div>
           <div class="pcard-name">Pengendali Gulma & Rumput Liar</div>
@@ -1245,11 +1263,13 @@ footer{
 
       <!-- 4. PUPUK -->
       <div class="pcard reveal" data-cat="pupuk">
-        <div class="pcard-img"><div class="pcard-img-bg bg1"></div>
-          <div class="pcard-icon ic1">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 22V12m0 0C12 7 7 4 3 6c4 0 7 3 9 6zm0 0c0-5 5-8 9-6-4 0-7 3-9 6z"/></svg>
-          </div>
-        </div>
+  <div class="pcard-img">
+    <div class="pcard-img-bg bg1"></div>
+    <div class="pcard-icon ic1">
+      <img src="pupuk.png" alt="Icon Pupuk">
+    </div>
+  </div>
+</div>
         <div class="pcard-body">
           <div class="pcard-cat">Pupuk</div>
           <div class="pcard-name">Nutrisi & Penyubur Tanaman</div>
@@ -1262,11 +1282,13 @@ footer{
 
       <!-- 5. INSEKTISIDA -->
       <div class="pcard reveal" data-cat="insektisida">
-        <div class="pcard-img"><div class="pcard-img-bg bg2"></div>
-          <div class="pcard-icon ic2">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><ellipse cx="12" cy="9" rx="5" ry="4"/><path d="M12 13v8m-5-6 5-2m5 2-5-2m-7-4 3 2m8-2-3 2M5 5 3 3m16 2 2-2"/></svg>
-          </div>
-        </div>
+  <div class="pcard-img">
+    <div class="pcard-img-bg bg2"></div>
+    <div class="pcard-icon ic2">
+      <img src="insektisida.png" alt="Icon Insektisida">
+    </div>
+  </div>
+</div>
         <div class="pcard-body">
           <div class="pcard-cat">Insektisida</div>
           <div class="pcard-name">Pembasmi Serangga & Hama</div>
@@ -1279,11 +1301,13 @@ footer{
 
       <!-- 6. ZPT & ADJUVANT -->
       <div class="pcard reveal" data-cat="zpt">
-        <div class="pcard-img"><div class="pcard-img-bg bg3"></div>
-          <div class="pcard-icon ic3">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M9 2v6l-2 4h10l-2-4V2"/><path d="M7 12v6a5 5 0 0 0 10 0v-6"/></svg>
-          </div>
-        </div>
+  <div class="pcard-img">
+    <div class="pcard-img-bg bg3"></div>
+    <div class="pcard-icon ic3">
+      <img src="zpt&adjuvant.png" alt="Icon ZPT">
+    </div>
+  </div>
+</div>
         <div class="pcard-body">
           <div class="pcard-cat">ZPT & Adjuvant</div>
           <div class="pcard-name">Perangsang Tumbuh & Perekat</div>
