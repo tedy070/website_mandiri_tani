@@ -944,12 +944,21 @@ footer{
   .hero {
     display: flex;
     flex-direction: column;
-    /* Ubah ke flex-start agar konten menumpuk dari atas, bukan menyebar ke ujung */
     justify-content: flex-start; 
     min-height: 100vh;
-    height: auto; /* Biarkan tinggi mengikuti konten jika kontennya panjang */
-  }
+    height: auto;
+    
+    /* PADDING UNTUK MENGATUR POSISI KONTEN */
+    /* Tambahkan padding-top untuk menurunkan seluruh konten (termasuk teks) */
+    padding-top: 20px; 
+    
+    /* Tambahkan padding-bottom untuk menaikkan posisi Stats Bar dari dasar layar */
+    padding-bottom: 0px; 
 
+    /* Pastikan padding tidak merusak ukuran elemen */
+    box-sizing: border-box; 
+    position: relative;
+}
   /* 2. Content Area */
   .hero-content {
     padding-top: 80px; 
@@ -977,14 +986,41 @@ footer{
 
   /* 5. Stats Bar - Dibuat menempel rapat di bawah tombol */
   .hero-stats {
-    /* Hapus margin-top: auto jika ingin benar-benar mepet dengan tombol */
-    margin-top: 0; 
+    margin-top: auto;
     position: relative;
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     width: 100%;
     background: rgba(26, 53, 8, 0.98);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
   }
+
+  .hero-stat {
+    flex: 1;
+    padding: 10px 2px; /* Padding dikurangi agar lebih compact */
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+  }
+
+  .hero-stat:last-child { border-right: none; }
+
+  .hs-num {
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #B8E880;
+  }
+
+  .hs-lbl {
+    font-size: 0.45rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+}
 
   /* Jika Anda tetap ingin Stat Bar di paling bawah TAPI tanpa celah besar: */
   /* Gunakan padding-bottom pada hero-content sebagai pengganti celah kosong */
