@@ -940,110 +940,110 @@ footer{
 }
 
 @media (max-width: 480px) {
-  /* Pindahkan posisi konten ke kiri layar */
+  /* 1. Hero Container */
   .hero {
-  display: flex;
-  flex-direction: column; /* Mengatur alur konten dari atas ke bawah */
-  min-height: 100vh;      /* Memastikan tinggi hero memenuhi layar */
-  justify-content: flex-start; 
-}
-  .hero-content {
-    padding-top: 100px; 
-    padding-left: 20px;
-    padding-right: 20px;
-    text-align: left; /* Memastikan teks dalam container rata kiri */
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Memaksa semua elemen anak lari ke kiri */
-    width: 100%;
-  }
-
-  /* 1. Eyebrow - Rapi memanjang ke samping */
-  .hero-eyebrow {
-    display: inline-flex;
-    white-space: nowrap;
-    font-size: 0.55rem;
-    padding: 6px 12px;
-    margin-bottom: 1.2rem;
+    min-height: 100vh;
+    height: 100svh; /* Mengunci tinggi layar agar pas */
     justify-content: flex-start;
   }
 
-  /* 2. Judul - Dibatasi agar jadi 2-3 baris tapi tetap rata kiri */
+  /* 2. Content Area - Padding dipadatkan */
+  .hero-content {
+    padding-top: 75px; /* Lebih naik sedikit dari sebelumnya */
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    flex: 1; /* Memastikan ruang tersisa mendorong stats ke bawah */
+  }
+
+  /* 3. Eyebrow - Lebih ramping */
+  .hero-eyebrow {
+    display: inline-flex;
+    white-space: nowrap;
+    font-size: 0.6rem; /* Ukuran teks lebih proposional */
+    padding: 4px 10px;
+    margin-bottom: 0.75rem; /* Jarak ke judul dikurangi */
+    letter-spacing: 1px;
+  }
+
+  /* 4. Judul - Line-height lebih rapat agar padat */
   .hero-h1 {
-    font-size: 1.85rem;
-    max-width: 300px;
-    line-height: 1.2;
-    margin-bottom: 1rem;
+    font-size: 2.1rem; /* Ukuran lebih pas untuk 2 baris */
+    max-width: 260px;
+    line-height: 1.1; /* Lebih rapat */
+    margin-bottom: 0.6rem; /* Jarak ke paragraf dikurangi */
     text-align: left;
   }
 
-  /* 3. Paragraf - Rata kiri rapi */
+  /* 5. Paragraf - Ukuran font dikurangi agar tidak terlalu mendominasi */
   .hero-p {
-    font-size: 0.85rem;
-    max-width: 280px;
+    font-size: 0.88rem;
+    max-width: 250px;
+    line-height: 1.4; /* Lebih rapat */
+    margin-bottom: 1.2rem; /* Jarak ke tombol dikurangi */
     text-align: left;
-    margin-left: 0; /* Memastikan tidak ada margin otomatis */
   }
 
-  /* 4. Tombol Sejajar (2 Tombol berdampingan) */
+  /* 6. Tombol - Dibuat lebih ramping */
   .hero-actions {
-    flex-direction: row; 
-    padding: 12px 5px;
+    display: flex;
+    flex-direction: row;
     gap: 8px;
-    font-size: 0.75rem;
-    justify-content: center;
+    width: 100%;
+    justify-content: flex-start;
   }
 
   .btn-gold, .btn-ghost-white {
     flex: 1;
-    padding: 12px 5px;
+    max-width: 145px;
+    padding: 10px 4px; /* Padding lebih ramping */
     font-size: 0.75rem;
     justify-content: center;
+    border-radius: 6px;
   }
 
- /* 5. Stats Bar: Menempel di Dasar Layar & Sejajar 4 Kolom */
-.hero-stats {
-  /* Menggunakan margin-top auto agar terdorong ke paling bawah container .hero */
-  margin-top: auto; 
-  
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap; /* Paksa tetap 1 baris horizontal */
-  width: 100%;
-  background: rgba(26, 53, 8, 0.95);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-}
+  /* 7. Stats Bar - Menempel di dasar dengan padding yang efisien */
+  .hero-stats {
+    margin-top: auto;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    background: rgba(26, 53, 8, 0.98);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+  }
 
-.hero-stat {
-  /* Membagi rata 4 kolom (25% per kotak) */
-  flex: 1 1 25%; 
-  padding: 15px 2px;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-  text-align: center;
-  min-width: 0; /* Mencegah elemen meluap */
-}
+  .hero-stat {
+    flex: 1;
+    padding: 10px 2px; /* Padding dikurangi agar lebih compact */
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+  }
 
-.hero-stat:last-child {
-  border-right: none; /* Hilangkan garis di kolom terakhir */
-}
+  .hero-stat:last-child { border-right: none; }
 
-.hs-num {
-  font-size: 1.1rem;
-  font-weight: 700;
-  display: block;
-  color: #B8E880; /* Warna hijau cerah agar menonjol */
-}
+  .hs-num {
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #B8E880;
+  }
 
-.hs-lbl {
-  font-size: 0.48rem;
-  color: rgba(255, 255, 255, 0.6);
-  text-transform: uppercase;
-  white-space: nowrap;
-  letter-spacing: 0.5px;
-  display: block;
-  margin-top: 2px;
+  .hs-lbl {
+    font-size: 0.45rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
 }
 </style>
 </head>
