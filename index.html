@@ -944,105 +944,52 @@ footer{
   .hero {
     display: flex;
     flex-direction: column;
+    /* Ubah ke flex-start agar konten menumpuk dari atas, bukan menyebar ke ujung */
+    justify-content: flex-start; 
     min-height: 100vh;
-    height: 100svh; /* Mengunci tinggi layar agar pas */
-    justify-content: flex-start;
+    height: auto; /* Biarkan tinggi mengikuti konten jika kontennya panjang */
   }
 
-  /* 2. Content Area - Padding dipadatkan */
+  /* 2. Content Area */
   .hero-content {
-    padding-top: 75px; /* Lebih naik sedikit dari sebelumnya */
+    padding-top: 80px; 
     padding-left: 20px;
     padding-right: 20px;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    /* Hapus flex: 1 agar tidak mengambil sisa ruang yang bikin celah */
+    flex: none; 
     width: 100%;
-    flex: 1; /* Memastikan ruang tersisa mendorong stats ke bawah */
   }
 
-  /* 3. Eyebrow - Lebih ramping */
-  .hero-eyebrow {
-    display: inline-flex;
-    white-space: nowrap;
-    font-size: 0.6rem; /* Ukuran teks lebih proposional */
-    padding: 4px 10px;
-    margin-bottom: 0.75rem; /* Jarak ke judul dikurangi */
-    letter-spacing: 1px;
-  }
+  /* 3. Penyesuaian Margin untuk Kepadatan */
+  .hero-eyebrow { margin-bottom: 0.5rem; }
+  .hero-h1 { margin-bottom: 0.5rem; line-height: 1.1; }
+  .hero-p { margin-bottom: 1rem; line-height: 1.4; }
 
-  /* 4. Judul - Line-height lebih rapat agar padat */
-  .hero-h1 {
-    font-size: 2.1rem; /* Ukuran lebih pas untuk 2 baris */
-    max-width: 260px;
-    line-height: 1.1; /* Lebih rapat */
-    margin-bottom: 0.6rem; /* Jarak ke paragraf dikurangi */
-    text-align: left;
-  }
-
-  /* 5. Paragraf - Ukuran font dikurangi agar tidak terlalu mendominasi */
-  .hero-p {
-    font-size: 0.88rem;
-    max-width: 250px;
-    line-height: 1.4; /* Lebih rapat */
-    margin-bottom: 1.2rem; /* Jarak ke tombol dikurangi */
-    text-align: left;
-  }
-
-  /* 6. Tombol - Dibuat lebih ramping */
+  /* 4. Hero Actions */
   .hero-actions {
     display: flex;
     flex-direction: row;
     gap: 8px;
     width: 100%;
-    justify-content: flex-start;
+    /* Margin bottom ini yang menentukan jarak ke Stat Bar */
+    margin-bottom: 2rem; 
   }
 
-  .btn-gold, .btn-ghost-white {
-    flex: 1;
-    max-width: 145px;
-    padding: 10px 4px; /* Padding lebih ramping */
-    font-size: 0.75rem;
-    justify-content: center;
-    border-radius: 6px;
-  }
-
-  /* 7. Stats Bar - Menempel di dasar dengan padding yang efisien */
+  /* 5. Stats Bar - Dibuat menempel rapat di bawah tombol */
   .hero-stats {
-    margin-top: auto;
+    /* Hapus margin-top: auto jika ingin benar-benar mepet dengan tombol */
+    margin-top: 0; 
     position: relative;
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
     width: 100%;
     background: rgba(26, 53, 8, 0.98);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
   }
 
-  .hero-stat {
-    flex: 1;
-    padding: 10px 2px; /* Padding dikurangi agar lebih compact */
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
-    text-align: center;
-  }
-
-  .hero-stat:last-child { border-right: none; }
-
-  .hs-num {
-    font-size: 1.05rem;
-    font-weight: 700;
-    line-height: 1;
-    color: #B8E880;
-  }
-
-  .hs-lbl {
-    font-size: 0.45rem;
-    color: rgba(255, 255, 255, 0.5);
-    text-transform: uppercase;
-    white-space: nowrap;
-    margin-top: 2px;
+  /* Jika Anda tetap ingin Stat Bar di paling bawah TAPI tanpa celah besar: */
+  /* Gunakan padding-bottom pada hero-content sebagai pengganti celah kosong */
+  .hero-content {
+    padding-bottom: 40px; 
   }
 }
 </style>
