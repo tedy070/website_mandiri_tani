@@ -941,11 +941,12 @@ footer{
 
 @media (max-width: 480px) {
   /* Pindahkan posisi konten ke kiri layar */
-  .hero { 
-    justify-content: flex-start; /* Mengatur horizontal ke kiri */
-    align-items: flex-start;    /* Mengatur vertikal ke atas */
-  }
-
+  .hero {
+  display: flex;
+  flex-direction: column; /* Mengatur alur konten dari atas ke bawah */
+  min-height: 100vh;      /* Memastikan tinggi hero memenuhi layar */
+  justify-content: flex-start; 
+}
   .hero-content {
     padding-top: 100px; 
     padding-left: 20px;
@@ -987,7 +988,10 @@ footer{
   /* 4. Tombol Sejajar (2 Tombol berdampingan) */
   .hero-actions {
     flex-direction: row; 
+    padding: 12px 5px;
     gap: 8px;
+    font-size: 0.75rem;
+    justify-content: center;
   }
 
   .btn-gold, .btn-ghost-white {
@@ -997,19 +1001,49 @@ footer{
     justify-content: center;
   }
 
-  /* Stats Bar Sejajar (4 Kolom) */
-  .hero-stats {
-    position: relative; /* Ikut aliran konten agar tidak menumpuk */
-    margin-top: 3rem;
-  }
+ /* 5. Stats Bar: Menempel di Dasar Layar & Sejajar 4 Kolom */
+.hero-stats {
+  /* Menggunakan margin-top auto agar terdorong ke paling bawah container .hero */
+  margin-top: auto; 
+  
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap; /* Paksa tetap 1 baris horizontal */
+  width: 100%;
+  background: rgba(26, 53, 8, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
 
-  .hero-stat {
-    padding: 12px 2px;
-    border-right: 1px solid rgba(255,255,255,0.1);
-  }
+.hero-stat {
+  /* Membagi rata 4 kolom (25% per kotak) */
+  flex: 1 1 25%; 
+  padding: 15px 2px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  min-width: 0; /* Mencegah elemen meluap */
+}
 
-  .hs-num { font-size: 1.1rem; }
-  .hs-lbl { font-size: 0.48rem; white-space: nowrap; }
+.hero-stat:last-child {
+  border-right: none; /* Hilangkan garis di kolom terakhir */
+}
+
+.hs-num {
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: block;
+  color: #B8E880; /* Warna hijau cerah agar menonjol */
+}
+
+.hs-lbl {
+  font-size: 0.48rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+  display: block;
+  margin-top: 2px;
 }
 </style>
 </head>
