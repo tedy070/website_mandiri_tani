@@ -939,56 +939,75 @@ footer{
   .modal-title{font-size:1.3rem}
 }
 
-/* ── SMALL MOBILE 480px (Custom 2-Button & 4-Stats) ── */
+/* ── SMALL MOBILE 480px (Adjusted Text Visibility) ── */
 @media (max-width: 480px) {
   
   /* 1. Hero Content Positioning */
   .hero-content {
     padding-top: 100px; 
-    padding-left: 6%;
-    padding-right: 6%;
+    /* Tambahkan padding-left lebih besar agar teks menjauh dari pinggir layar */
+    padding-left: 8%; 
+    padding-right: 8%;
     padding-bottom: 5vh;
+    
+    /* Pastikan lebar kontainer fleksibel */
+    width: 100%;
+    max-width: 100vw; 
+    
     text-align: left;
+    position: relative;
+    z-index: 10;
+    
+    /* Mencegah teks terpotong jika ada elemen luar yang bergeser */
+    box-sizing: border-box; 
+    overflow: visible; 
   }
 
-  /* 2. Actions & Buttons (SEJAJAR 2 TOMBOL) */
+  /* 2. Typography Adjustments */
+  .hero-eyebrow {
+    font-size: 0.65rem;
+    margin-left: 2px; /* Penyesuaian halus agar sejajar dengan huruf H1 */
+    margin-bottom: 1rem;
+  }
+
+  .hero-h1 {
+    /* Gunakan ukuran yang sedikit lebih kecil agar kata tidak terpotong ke kiri/kanan */
+    font-size: 2.2rem; 
+    line-height: 1.15;
+    margin-bottom: 0.8rem;
+    width: 100%;
+  }
+
+  .hero-p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    /* Pastikan paragraf tidak terlalu lebar */
+    max-width: 90%; 
+  }
+
+  /* 3. Hero Actions (Tetap Sejajar 2 Tombol) */
   .hero-actions {
     display: flex;
-    flex-direction: row; 
-    flex-wrap: nowrap; /* Tetap satu baris untuk 2 tombol */
-    gap: 0.75rem;
-    width: 100%;
-  }
-
-  .btn-gold, 
-  .btn-ghost-white {
-    flex: 1; /* Membagi 50% - 50% */
-    justify-content: center; 
-    padding: 0.8rem 0.5rem;
-    font-size: 0.82rem; /* Sedikit lebih besar karena hanya 2 tombol */
-    white-space: nowrap;
-    border-radius: 7px;
-  }
-
-  /* 3. Stats Bar (SEJAJAR 4 KOTAK) */
-  .hero-stats {
-    position: relative; 
-    display: flex;
     flex-direction: row;
-    flex-wrap: nowrap; /* Paksa 4 kotak dalam satu baris */
-    background: rgba(26, 53, 8, 0.95);
+    gap: 0.8rem;
+    padding-right: 5%; /* Memberi ruang di kanan agar tombol tidak mepet */
+  }
+
+  /* 4. Stats Bar (Tetap Sejajar 4 Baris) */
+  .hero-stats {
+    position: relative;
     margin-top: 2.5rem;
     width: 100%;
-    border-top: 1px solid rgba(123, 174, 62, 0.2);
+    /* Pastikan stats bar tidak memiliki margin negatif yang menariknya ke kiri */
+    left: 0;
   }
 
   .hero-stat {
-    flex: 1 1 25%; /* Presisi membagi 100% menjadi 4 bagian (25% per kotak) */
-    padding: 1rem 0.2rem;
-    border-right: 1px solid rgba(123, 174, 62, 0.15);
-    text-align: center;
-    min-width: 0;
+    flex: 1 1 25%;
+    padding: 1rem 0.1rem;
   }
+}
 
   .hero-stat:last-child {
     border-right: none;
