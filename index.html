@@ -939,46 +939,44 @@ footer{
   .modal-title{font-size:1.3rem}
 }
 
-/* ────────────────────────────────────────────────────────────────
-   FIX UNTUK MOBILE (480PX KE BAWAH)
-   ──────────────────────────────────────────────────────────────── */
 @media (max-width: 480px) {
-  .hero {
-    justify-content: center; /* Pindahkan konten ke tengah layar */
-    align-items: flex-start; /* Mulai dari atas */
-  }
+  /* Pindahkan posisi konten agar tidak terlempar ke kanan */
+  .hero { justify-content: flex-start; align-items: center; }
 
   .hero-content {
-    padding-top: 100px; /* Jarak agar tidak tertutup Navbar */
+    padding-top: 100px; /* Jarak agar teks muncul di bawah Navbar */
     padding-left: 20px;
     padding-right: 20px;
-    text-align: left; /* Tetap kiri sesuai permintaan sebelumnya */
   }
 
+  /* 1. Eyebrow */
   .hero-eyebrow {
+    display: inline-flex;
+    white-space: nowrap;
     font-size: 0.55rem;
     padding: 4px 10px;
-    white-space: nowrap;
+    margin-bottom: 1.5rem;
   }
 
+  /* 2. Judul 2 baris */
   .hero-h1 {
-    font-size: 1.85rem; /* Paksa jadi 2 baris */
+    font-size: 1.85rem;
     max-width: 300px;
     line-height: 1.2;
   }
 
+  /* 3. Paragraf Rapi */
   .hero-p {
     font-size: 0.85rem;
     max-width: 280px;
-    margin-bottom: 1.5rem;
   }
 
-  /* Tombol Sejajar (2 Kolom) */
+  /* 4. Tombol Sejajar */
   .hero-actions {
+    display: flex;
     flex-direction: row; 
     gap: 8px;
   }
-
   .btn-gold, .btn-ghost-white {
     flex: 1;
     padding: 12px 5px;
@@ -986,30 +984,18 @@ footer{
     justify-content: center;
   }
 
-  /* Stats Bar Sejajar (4 Kolom) */
+  /* 5. Stats Sejajar 4 Kotak */
   .hero-stats {
-    position: relative; /* Ikut aliran konten agar tidak menumpuk */
+    position: relative; /* Agar tidak menindih tombol */
     margin-top: 3rem;
+    flex-wrap: nowrap;
   }
-
   .hero-stat {
-    padding: 12px 2px;
-    border-right: 1px solid rgba(255,255,255,0.1);
+    flex: 1; /* Memberi ruang 25% tiap kotak */
+    padding: 10px 2px;
   }
-
   .hs-num { font-size: 1.1rem; }
-  .hs-lbl { font-size: 0.48rem; white-space: nowrap; }
-}
-  /* 6. Visual Accents */
-  .process-step-circle {
-    width: 44px !important;
-    height: 44px !important;
-  }
-
-  .av-accent {
-    width: 75%;
-    height: auto;
-  }
+  .hs-lbl { font-size: 0.45rem; white-space: nowrap; }
 }
 </style>
 </head>
