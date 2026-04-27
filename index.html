@@ -939,100 +939,104 @@ footer{
   .modal-title{font-size:1.3rem}
 }
 
-/* ── SMALL MOBILE 480px (Adjusted Text Visibility) ── */
+/* ── UPDATE FINAL MOBILE 480px ── */
 @media (max-width: 480px) {
   
-  /* 1. Hero Content Positioning */
+  /* 1. Hero Content: Memberi ruang napas agar tidak menempel ke kiri */
   .hero-content {
-    padding-top: 100px; 
-    /* Tambahkan padding-left lebih besar agar teks menjauh dari pinggir layar */
-    padding-left: 8%; 
-    padding-right: 8%;
-    padding-bottom: 5vh;
-    
-    /* Pastikan lebar kontainer fleksibel */
-    width: 100%;
-    max-width: 100vw; 
-    
-    text-align: left;
-    position: relative;
-    z-index: 10;
-    
-    /* Mencegah teks terpotong jika ada elemen luar yang bergeser */
-    box-sizing: border-box; 
-    overflow: visible; 
+    padding-top: 80px; /* Jarak dari Navbar */
+    padding-left: 20px; 
+    padding-right: 20px;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
-  /* 2. Typography Adjustments */
+  /* 2. Hero Eyebrow: Memanjang ke samping & Teks diperkecil */
   .hero-eyebrow {
-    font-size: 0.65rem;
-    margin-left: 2px; /* Penyesuaian halus agar sejajar dengan huruf H1 */
-    margin-bottom: 1rem;
-  }
-
-  .hero-h1 {
-    /* Gunakan ukuran yang sedikit lebih kecil agar kata tidak terpotong ke kiri/kanan */
-    font-size: 2.2rem; 
-    line-height: 1.15;
-    margin-bottom: 0.8rem;
-    width: 100%;
-  }
-
-  .hero-p {
-    font-size: 0.88rem;
-    line-height: 1.6;
+    display: inline-flex;
+    white-space: nowrap; /* Paksa satu baris */
+    font-size: 0.55rem; /* Teks lebih kecil */
+    letter-spacing: 1px;
+    padding: 6px 12px;
     margin-bottom: 1.5rem;
-    /* Pastikan paragraf tidak terlalu lebar */
-    max-width: 90%; 
+    width: auto;
   }
 
-  /* 3. Hero Actions (Tetap Sejajar 2 Tombol) */
+  /* 3. Hero H1: Dibuat menjadi 2 baris saja */
+  .hero-h1 {
+    font-size: 1.8rem; /* Mengecilkan ukuran agar muat 2 baris */
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    max-width: 280px; /* Membatasi lebar agar teks otomatis patah jadi 2 baris */
+  }
+
+  /* 4. Hero P: Lebih ramping dan rapi */
+  .hero-p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    max-width: 260px; /* Mencegah teks terlalu lebar ke kanan */
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* 5. Tombol Action: Sejajar (Side-by-Side) */
   .hero-actions {
     display: flex;
-    flex-direction: row;
-    gap: 0.8rem;
-    padding-right: 5%; /* Memberi ruang di kanan agar tombol tidak mepet */
+    flex-direction: row; /* Berdampingan */
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 3rem;
   }
 
-  /* 4. Stats Bar (Tetap Sejajar 4 Baris) */
+  .btn-gold, .btn-ghost-white {
+    flex: 1; /* Membagi lebar 50-50 */
+    padding: 12px 5px; /* Padding vertikal nyaman, horizontal tipis */
+    font-size: 0.75rem;
+    justify-content: center;
+    white-space: nowrap;
+    border-radius: 8px;
+  }
+  
+  /* Perkecil ikon di dalam tombol agar muat */
+  .hero-actions svg, .hero-actions i {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* 6. Stat Bar: Sejajar 1 Baris (4 Kotak) */
   .hero-stats {
     position: relative;
-    margin-top: 2.5rem;
-    width: 100%;
-    /* Pastikan stats bar tidak memiliki margin negatif yang menariknya ke kiri */
-    left: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap; /* Paksa satu baris lurus */
+    background: rgba(26, 53, 8, 0.9);
+    width: calc(100% + 40px); /* Melewati padding parent agar full screen */
+    margin-left: -20px; /* Menetralkan padding hero-content */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .hero-stat {
-    flex: 1 1 25%;
-    padding: 1rem 0.1rem;
-  }
-}
-
-  .hero-stat:last-child {
-    border-right: none;
+    flex: 1;
+    padding: 15px 5px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
   }
 
-  /* Ukuran Teks Stats agar muat 4 kolom */
+  .hero-stat:last-child { border-right: none; }
+
   .hs-num {
-    font-size: 1.1rem; 
+    font-size: 1.1rem; /* Angka diperkecil agar tidak tumpang tindih */
     font-weight: 700;
-    color: #B8E880;
     display: block;
   }
 
   .hs-lbl {
-    font-size: 0.5rem;
-    color: rgba(255, 255, 255, 0.5);
-    letter-spacing: 0.2px;
+    font-size: 0.45rem; /* Label sangat kecil agar muat sebaris */
     text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+    display: block;
     white-space: nowrap;
-  }
-
-  /* Sembunyikan ikon hanya jika teks tombol terlalu panjang */
-  .hero-actions svg {
-    width: 14px;
-    height: 14px;
   }
 }
   /* 6. Visual Accents */
