@@ -939,105 +939,66 @@ footer{
   .modal-title{font-size:1.3rem}
 }
 
-/* ── UPDATE FINAL MOBILE 480px ── */
+/* ────────────────────────────────────────────────────────────────
+   FIX UNTUK MOBILE (480PX KE BAWAH)
+   ──────────────────────────────────────────────────────────────── */
 @media (max-width: 480px) {
-  
-  /* 1. Hero Content: Memberi ruang napas agar tidak menempel ke kiri */
+  .hero {
+    justify-content: center; /* Pindahkan konten ke tengah layar */
+    align-items: flex-start; /* Mulai dari atas */
+  }
+
   .hero-content {
-    padding-top: 80px; /* Jarak dari Navbar */
-    padding-left: 20px; 
+    padding-top: 100px; /* Jarak agar tidak tertutup Navbar */
+    padding-left: 20px;
     padding-right: 20px;
-    max-width: 100%;
-    box-sizing: border-box;
+    text-align: left; /* Tetap kiri sesuai permintaan sebelumnya */
   }
 
-  /* 2. Hero Eyebrow: Memanjang ke samping & Teks diperkecil */
   .hero-eyebrow {
-    display: inline-flex;
-    white-space: nowrap; /* Paksa satu baris */
-    font-size: 0.55rem; /* Teks lebih kecil */
-    letter-spacing: 1px;
-    padding: 6px 12px;
-    margin-bottom: 1.5rem;
-    width: auto;
+    font-size: 0.55rem;
+    padding: 4px 10px;
+    white-space: nowrap;
   }
 
-  /* 3. Hero H1: Dibuat menjadi 2 baris saja */
   .hero-h1 {
-    font-size: 1.8rem; /* Mengecilkan ukuran agar muat 2 baris */
+    font-size: 1.85rem; /* Paksa jadi 2 baris */
+    max-width: 300px;
     line-height: 1.2;
-    margin-bottom: 1rem;
-    max-width: 280px; /* Membatasi lebar agar teks otomatis patah jadi 2 baris */
   }
 
-  /* 4. Hero P: Lebih ramping dan rapi */
   .hero-p {
     font-size: 0.85rem;
-    line-height: 1.5;
-    margin-bottom: 2rem;
-    max-width: 260px; /* Mencegah teks terlalu lebar ke kanan */
-    color: rgba(255, 255, 255, 0.8);
+    max-width: 280px;
+    margin-bottom: 1.5rem;
   }
 
-  /* 5. Tombol Action: Sejajar (Side-by-Side) */
+  /* Tombol Sejajar (2 Kolom) */
   .hero-actions {
-    display: flex;
-    flex-direction: row; /* Berdampingan */
+    flex-direction: row; 
     gap: 8px;
-    width: 100%;
-    margin-bottom: 3rem;
   }
 
   .btn-gold, .btn-ghost-white {
-    flex: 1; /* Membagi lebar 50-50 */
-    padding: 12px 5px; /* Padding vertikal nyaman, horizontal tipis */
+    flex: 1;
+    padding: 12px 5px;
     font-size: 0.75rem;
     justify-content: center;
-    white-space: nowrap;
-    border-radius: 8px;
-  }
-  
-  /* Perkecil ikon di dalam tombol agar muat */
-  .hero-actions svg, .hero-actions i {
-    width: 14px;
-    height: 14px;
   }
 
-  /* 6. Stat Bar: Sejajar 1 Baris (4 Kotak) */
+  /* Stats Bar Sejajar (4 Kolom) */
   .hero-stats {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap; /* Paksa satu baris lurus */
-    background: rgba(26, 53, 8, 0.9);
-    width: calc(100% + 40px); /* Melewati padding parent agar full screen */
-    margin-left: -20px; /* Menetralkan padding hero-content */
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative; /* Ikut aliran konten agar tidak menumpuk */
+    margin-top: 3rem;
   }
 
   .hero-stat {
-    flex: 1;
-    padding: 15px 5px;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
+    padding: 12px 2px;
+    border-right: 1px solid rgba(255,255,255,0.1);
   }
 
-  .hero-stat:last-child { border-right: none; }
-
-  .hs-num {
-    font-size: 1.1rem; /* Angka diperkecil agar tidak tumpang tindih */
-    font-weight: 700;
-    display: block;
-  }
-
-  .hs-lbl {
-    font-size: 0.45rem; /* Label sangat kecil agar muat sebaris */
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-top: 4px;
-    display: block;
-    white-space: nowrap;
-  }
+  .hs-num { font-size: 1.1rem; }
+  .hs-lbl { font-size: 0.48rem; white-space: nowrap; }
 }
   /* 6. Visual Accents */
   .process-step-circle {
