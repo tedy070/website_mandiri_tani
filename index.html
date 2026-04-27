@@ -940,62 +940,92 @@ footer{
 }
 
 @media (max-width: 480px) {
-  /* Pindahkan posisi konten agar tidak terlempar ke kanan */
-  .hero { justify-content: flex-start; align-items: center; }
-
-  .hero-content {
-    padding-top: 100px; /* Jarak agar teks muncul di bawah Navbar */
-    padding-left: 20px;
-    padding-right: 20px;
+  /* Pindahkan posisi konten ke kiri layar */
+  .hero { 
+    justify-content: flex-start; /* Mengatur horizontal ke kiri */
+    align-items: flex-start;    /* Mengatur vertikal ke atas */
   }
 
-  /* 1. Eyebrow */
+  .hero-content {
+    padding-top: 100px; 
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: left; /* Memastikan teks dalam container rata kiri */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Memaksa semua elemen anak lari ke kiri */
+    width: 100%;
+  }
+
+  /* 1. Eyebrow - Rapi memanjang ke samping */
   .hero-eyebrow {
     display: inline-flex;
     white-space: nowrap;
     font-size: 0.55rem;
-    padding: 4px 10px;
-    margin-bottom: 1.5rem;
+    padding: 6px 12px;
+    margin-bottom: 1.2rem;
+    justify-content: flex-start;
   }
 
-  /* 2. Judul 2 baris */
+  /* 2. Judul - Dibatasi agar jadi 2-3 baris tapi tetap rata kiri */
   .hero-h1 {
     font-size: 1.85rem;
     max-width: 300px;
     line-height: 1.2;
+    margin-bottom: 1rem;
+    text-align: left;
   }
 
-  /* 3. Paragraf Rapi */
+  /* 3. Paragraf - Rata kiri rapi */
   .hero-p {
     font-size: 0.85rem;
     max-width: 280px;
+    text-align: left;
+    margin-left: 0; /* Memastikan tidak ada margin otomatis */
   }
 
-  /* 4. Tombol Sejajar */
+  /* 4. Tombol Sejajar (2 Tombol berdampingan) */
   .hero-actions {
     display: flex;
     flex-direction: row; 
+    justify-content: flex-start; /* Mulai dari kiri */
     gap: 8px;
+    width: 100%;
+    margin-bottom: 2rem;
   }
+
   .btn-gold, .btn-ghost-white {
-    flex: 1;
+    flex: 1; /* Memberi lebar sama rata */
+    max-width: 160px; /* Batas agar tidak terlalu panjang ke kanan */
     padding: 12px 5px;
     font-size: 0.75rem;
     justify-content: center;
+    white-space: nowrap;
   }
 
-  /* 5. Stats Sejajar 4 Kotak */
+  /* 5. Stats Sejajar 4 Kotak Horizontal */
   .hero-stats {
-    position: relative; /* Agar tidak menindih tombol */
-    margin-top: 3rem;
-    flex-wrap: nowrap;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap; /* Tetap satu baris */
+    margin-top: 2rem;
+    width: calc(100% + 40px); /* Melewati padding parent */
+    margin-left: -20px; /* Menempel ke kiri layar */
+    background: rgba(26, 53, 8, 0.95);
   }
+
   .hero-stat {
-    flex: 1; /* Memberi ruang 25% tiap kotak */
-    padding: 10px 2px;
+    flex: 1;
+    padding: 12px 2px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center; /* Angka statistik biasanya lebih rapi center di dalam kotaknya */
   }
-  .hs-num { font-size: 1.1rem; }
-  .hs-lbl { font-size: 0.45rem; white-space: nowrap; }
+
+  .hero-stat:last-child { border-right: none; }
+
+  .hs-num { font-size: 1.1rem; display: block; }
+  .hs-lbl { font-size: 0.45rem; white-space: nowrap; display: block; }
 }
 </style>
 </head>
