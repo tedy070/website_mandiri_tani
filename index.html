@@ -939,9 +939,24 @@ footer{
   .modal-title{font-size:1.3rem}
 }
 
-/* ── SMALL MOBILE 480px (Optimized & Merged) ── */
+/* ── SMALL MOBILE 480px (Optimized, Merged & Adjusted Position) ── */
 @media (max-width: 480px) {
-  /* 1. Hero Section Adjustments */
+  
+  /* 1. Hero Content Positioning (Agar teks di bawah navbar) */
+  .hero-content {
+    /* Sesuaikan 80px-100px tergantung tinggi navbar Anda */
+    padding-top: 100px; 
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-bottom: 5vh; 
+    margin-top: 0; /* Reset jika ada margin negatif */
+    max-width: 100%;
+    text-align: left; /* Konsisten dengan gaya desktop */
+    position: relative;
+    z-index: 10;
+  }
+
+  /* 2. Hero Typography Adjustments */
   .hero-eyebrow {
     font-size: 0.6rem;
     padding: 3px 10px;
@@ -950,7 +965,6 @@ footer{
   }
 
   .hero-h1 {
-    /* Menggunakan clamp yang Anda minta namun dengan batas yang lebih terkontrol */
     font-size: clamp(2.1rem, 9vw, 2.5rem); 
     line-height: 1.1;
     margin-bottom: 0.8rem;
@@ -961,70 +975,86 @@ footer{
     font-size: 0.88rem;
     line-height: 1.6;
     margin-bottom: 1.5rem;
-    max-width: 100%;
     color: rgba(250, 250, 245, 0.85);
   }
 
-  /* 2. Actions & Buttons */
-  .hero-actions {
-    display: flex;
-    flex-direction: column; /* Tombol bertumpuk vertikal */
-    align-items: stretch; /* Melebar penuh layar */
-    gap: 0.75rem;
-  }
+  /* 3. Actions & Buttons (Side-by-side Alignment) */
+.hero-actions {
+  display: flex;
+  flex-direction: row; /* Kembali sejajar horisontal */
+  justify-content: flex-start; /* Sejajar ke kiri sesuai teks */
+  flex-wrap: wrap; /* Agar aman jika teks tombol sangat panjang */
+  gap: 0.75rem;
+}
 
-  .btn-gold, 
-  .btn-ghost-white {
-    width: 100%; /* Memastikan tombol selebar container */
-    justify-content: center; /* Teks di tengah */
-    padding: 0.75rem 1.5rem;
-    font-size: 0.82rem;
-  }
+.btn-gold, 
+.btn-ghost-white {
+  width: auto; /* Tombol mengikuti lebar teks di dalamnya */
+  flex: 1; /* Opsional: Membuat kedua tombol memiliki lebar yang sama besar */
+  max-width: 180px; /* Opsional: Membatasi agar tidak terlalu lebar di HP besar */
+  justify-content: center; 
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  white-space: nowrap; /* Mencegah teks tombol pecah jadi 2 baris */
+}
 
-  /* 3. Grid & Layout Elements */
+  /* 4. Grid & Layout Elements */
   .pgrid, 
   .modal-grid {
-    grid-template-columns: 1fr; /* Paksa 1 kolom */
+    grid-template-columns: 1fr; 
     gap: 20px;
   }
 
   .metrics-row-inner {
-    grid-template-columns: 1fr 1fr !important; /* Tetap 2 kolom sesuai permintaan */
+    grid-template-columns: 1fr 1fr !important; 
     gap: 10px;
   }
 
-  /* 4. Visual Accents & Components */
+  /* 5. Stats Bar (Sejajar 4 Kotak Horizontal) */
+.hero-stats {
+  position: relative; 
+  display: flex; /* Memastikan parent menggunakan flex */
+  flex-direction: row;
+  flex-wrap: nowrap; /* Paksa tetap satu baris lurus */
+  background: rgba(26, 53, 8, 0.95);
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.hero-stat {
+  /* Membagi 100% lebar menjadi 4 bagian sama rata */
+  flex: 1 1 25%; 
+  padding: 0.8rem 0.2rem; /* Kurangi padding samping agar teks tidak sesak */
+  border-right: 1px solid rgba(123, 174, 62, 0.15);
+  text-align: center;
+  min-width: 0; /* Mencegah elemen meluap jika teks panjang */
+}
+
+.hero-stat:last-child {
+  border-right: none; /* Hilangkan garis pada kotak terakhir */
+}
+
+.hs-num {
+  font-size: 1.2rem; /* Sedikit diperkecil agar 4 kolom muat di layar sempit */
+  display: block;
+  font-weight: 700;
+}
+
+.hs-lbl {
+  font-size: 0.5rem; /* Ukuran teks keterangan disesuaikan */
+  letter-spacing: 0.2px;
+  white-space: nowrap; /* Mencegah teks turun ke baris baru jika memungkinkan */
+}
+
+  /* 6. Visual Accents */
   .process-step-circle {
-    width: 44px !important; /* Sedikit lebih ramping untuk layar 480px */
+    width: 44px !important;
     height: 44px !important;
   }
 
   .av-accent {
-    width: 75%; /* Penyesuaian agar proporsional */
-    height: auto; 
-    max-height: 44%;
-  }
-
-  /* 5. Stats Bar Adjustments */
-  .hero-stats {
-    position: relative; /* Menghindari overlap pada layar HP yang pendek */
-    flex-wrap: wrap;
-    background: rgba(26, 53, 8, 0.95);
-  }
-
-  .hero-stat {
-    flex: 1 1 33.33%; /* Membagi 3 kolom statistik tetap dalam 1 baris */
-    padding: 0.8rem 0.4rem;
-    border-right: 1px solid rgba(123, 174, 62, 0.15);
-  }
-
-  .hs-num {
-    font-size: 1.45rem;
-  }
-
-  .hs-lbl {
-    font-size: 0.55rem;
-    letter-spacing: 0.5px;
+    width: 75%;
+    height: auto;
   }
 }
 </style>
