@@ -986,46 +986,30 @@ footer{
 
   /* 4. Tombol Sejajar (2 Tombol berdampingan) */
   .hero-actions {
-    display: flex;
     flex-direction: row; 
-    justify-content: flex-start; /* Mulai dari kiri */
     gap: 8px;
-    width: 100%;
-    margin-bottom: 2rem;
   }
 
   .btn-gold, .btn-ghost-white {
-    flex: 1; /* Memberi lebar sama rata */
-    max-width: 160px; /* Batas agar tidak terlalu panjang ke kanan */
+    flex: 1;
     padding: 12px 5px;
     font-size: 0.75rem;
     justify-content: center;
-    white-space: nowrap;
   }
 
-  /* 5. Stats Sejajar 4 Kotak Horizontal */
+  /* Stats Bar Sejajar (4 Kolom) */
   .hero-stats {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap; /* Tetap satu baris */
-    margin-top: 2rem;
-    width: calc(100% + 40px); /* Melewati padding parent */
-    margin-left: -20px; /* Menempel ke kiri layar */
-    background: rgba(26, 53, 8, 0.95);
+    position: relative; /* Ikut aliran konten agar tidak menumpuk */
+    margin-top: 3rem;
   }
 
   .hero-stat {
-    flex: 1;
     padding: 12px 2px;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center; /* Angka statistik biasanya lebih rapi center di dalam kotaknya */
+    border-right: 1px solid rgba(255,255,255,0.1);
   }
 
-  .hero-stat:last-child { border-right: none; }
-
-  .hs-num { font-size: 1.1rem; display: block; }
-  .hs-lbl { font-size: 0.45rem; white-space: nowrap; display: block; }
+  .hs-num { font-size: 1.1rem; }
+  .hs-lbl { font-size: 0.48rem; white-space: nowrap; }
 }
 </style>
 </head>
