@@ -1265,7 +1265,7 @@ footer{
       <div class="modal-product-list" id="mList"></div>
     </div>
     <div class="modal-footer">
-      <a href="https://wa.me/6281123456789" class="btn-wa">
+      <a href="https://wa.me/6285777054607" class="btn-wa">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
         Tanya via WhatsApp
       </a>
@@ -1531,13 +1531,13 @@ footer{
       <div class="form-card reveal">
         <h3 style="font-family:var(--fd);font-size:1.45rem;font-weight:700;color:var(--green-ink);margin-bottom:.4rem;letter-spacing:-.2px">Kirim Pesan</h3><p style="font-size:.8rem;color:var(--text-soft);margin-bottom:1.5rem">Kami akan merespons dalam 1×24 jam kerja.</p>
         <div class="form-row">
-          <div class="fg"><label>Nama Lengkap</label><input type="text" placeholder="Nama Anda"/></div>
-          <div class="fg"><label>Nomor WA / HP</label><input type="tel" placeholder="+62..."/></div>
+          <div class="fg"><label>Nama Lengkap</label><input type="text" id="name" placeholder="Nama Anda"/></div>
+          <div class="fg"><label>Nomor WA / HP</label><input type="tel" id="whatsapp" placeholder="+62..."/></div>
         </div>
-        <div class="fg"><label>Alamat Email</label><input type="email" placeholder="email@domain.com"/></div>
-        <div class="fg"><label>Topik</label><select><option>Konsultasi Produk</option><option>Pemesanan & Harga</option><option>Program Kemitraan</option><option>Informasi Pengiriman</option><option>Lainnya</option></select></div>
-        <div class="fg"><label>Pesan</label><textarea placeholder="Ceritakan kebutuhan lahan pertanian Anda..."></textarea></div>
-        <button class="btn-submit" id="sendBtn">Kirim Pesan <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+        <div class="fg"><label>Alamat Email</label><input type="email" id="email" placeholder="email@domain.com"/></div>
+        <div class="fg"><label>Topik</label><select id="topic"><option>Konsultasi Produk</option><option>Pemesanan & Harga</option><option>Program Kemitraan</option><option>Informasi Pengiriman</option><option>Lainnya</option></select></div>
+        <div class="fg"><label>Pesan</label><textarea id="message" placeholder="Ceritakan kebutuhan lahan pertanian Anda..."></textarea></div>
+        <button class="btn-submit"id="sendBtn">Kirim Pesan <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
       </div>
     </div>
   </div>
@@ -1633,14 +1633,37 @@ footer{
   });
   revealEls.forEach(el => io.observe(el));
 
-  // Form
-  const sendBtn = document.getElementById('sendBtn');
-  if(sendBtn) sendBtn.addEventListener('click', () => {
-    const orig = sendBtn.innerHTML;
-    sendBtn.innerHTML = 'Pesan Terkirim!';
-    sendBtn.style.background = '#1A5008';
-    setTimeout(() => { sendBtn.innerHTML = orig; sendBtn.style.background = ''; }, 3000);
-  });
+  document.getElementById('sendBtn').addEventListener('click', function() {
+    // 1. Konfigurasi Nomor WhatsApp (Ganti dengan nomor Anda)
+    const phoneNumber = "6285777054607"; 
+
+    // 2. Ambil Value dari Input
+    const name = document.getElementById('name').value;
+    const whatsapp = document.getElementById('whatsapp').value;
+    const email = document.getElementById('email').value;
+    const topic = document.getElementById('topic').value;
+    const message = document.getElementById('message').value;
+
+    // 3. Validasi Sederhana
+    if (name === "" || message === "") {
+        alert("Mohon lengkapi Nama dan Pesan Anda.");
+        return;
+    }
+
+    // 4. Rangkai Pesan (Gunakan %0A untuk baris baru)
+    const text = `*Halo Admin, ada pesan baru!*%0A%0A` +
+                 `*Nama:* ${name}%0A` +
+                 `*WA:* ${whatsapp}%0A` +
+                 `*Email:* ${email}%0A` +
+                 `*Topik:* ${topic}%0A` +
+                 `*Pesan:* ${message}`;
+
+    // 5. Eksekusi Link WhatsApp
+    const waLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${text}`;
+    
+    // Buka di tab baru
+    window.open(waLink, '_blank');
+});
 
 })();
 
